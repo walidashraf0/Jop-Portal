@@ -10,6 +10,13 @@ const ProtectedRoute = ({ children }) => {
   }
 
   //   console.log(user);
+  if (
+    user !== undefined &&
+    !user?.unsafeMetadata?.role &&
+    pathname !== "/onboarding"
+  ) {
+    return <Navigate to={"/onboarding"} />;
+  }
 
   return <div>{children}</div>;
 };
